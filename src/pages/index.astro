@@ -1,8 +1,10 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import { Button } from "@/components/ui/button";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
-	<h1>Welcome to my blog</h1>
+  <h1>Welcome to my blog</h1>
+  <br />
+  <a href="/posts"><Button>Start Reading</Button></a>
 </BaseLayout>
-

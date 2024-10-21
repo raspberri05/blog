@@ -1,11 +1,22 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getEntry } from 'astro:content';
-const entry = await getEntry("posts", "hello-world")
+import { Button } from "@/components/ui/button";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+const posts = await getCollection("posts");
 ---
 
 <BaseLayout>
-	<h1>{entry?.data.title}</h1>
-
+  {
+    posts.map((post: any) => (
+      <div>
+        <h1>{post.data.title}</h1>
+        <br />
+        <a href={`/posts/${post.slug}`}>
+          <Button>Read More</Button>
+        </a>
+        <br />
+        <br />
+      </div>
+    ))
+  }
 </BaseLayout>
-
