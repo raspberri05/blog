@@ -1,5 +1,6 @@
 ---
 title: first post
+author: Naya Singhania
 posted: 2024-10-20T07:00:00.000Z
 ---
 

@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getEntry } from 'astro:content';
+const entry = await getEntry("posts", "hello-world")
+---
+
+<BaseLayout>
+	<h1>{entry?.data.title}</h1>
+
+</BaseLayout>
+
