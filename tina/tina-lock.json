@@ -25,6 +25,15 @@
           },
           {
             "type": "string",
+            "name": "full_title",
+            "label": "Full Title",
+            "required": true,
+            "namespace": ["post", "full_title"],
+            "searchable": true,
+            "uid": false
+          },
+          {
+            "type": "string",
             "name": "author",
             "label": "Author",
             "required": true,
@@ -33,12 +42,39 @@
             "uid": false
           },
           {
+            "type": "string",
+            "name": "excerpt",
+            "label": "Excerpt",
+            "required": true,
+            "namespace": ["post", "excerpt"],
+            "searchable": true,
+            "uid": false
+          },
+          {
+            "type": "string",
+            "name": "category",
+            "label": "Category",
+            "required": true,
+            "namespace": ["post", "category"],
+            "searchable": true,
+            "uid": false
+          },
+          {
             "type": "datetime",
-            "name": "posted",
+            "name": "date",
             "label": "Date Posted",
             "required": true,
-            "namespace": ["post", "posted"],
+            "namespace": ["post", "date"],
             "searchable": true,
+            "uid": false
+          },
+          {
+            "type": "image",
+            "name": "image",
+            "label": "Image",
+            "required": true,
+            "namespace": ["post", "image"],
+            "searchable": false,
             "uid": false
           },
           {
@@ -909,6 +945,18 @@
           },
           {
             "kind": "FieldDefinition",
+            "name": { "kind": "Name", "value": "full_title" },
+            "arguments": [],
+            "type": {
+              "kind": "NonNullType",
+              "type": {
+                "kind": "NamedType",
+                "name": { "kind": "Name", "value": "String" }
+              }
+            }
+          },
+          {
+            "kind": "FieldDefinition",
             "name": { "kind": "Name", "value": "author" },
             "arguments": [],
             "type": {
@@ -921,7 +969,43 @@
           },
           {
             "kind": "FieldDefinition",
-            "name": { "kind": "Name", "value": "posted" },
+            "name": { "kind": "Name", "value": "excerpt" },
+            "arguments": [],
+            "type": {
+              "kind": "NonNullType",
+              "type": {
+                "kind": "NamedType",
+                "name": { "kind": "Name", "value": "String" }
+              }
+            }
+          },
+          {
+            "kind": "FieldDefinition",
+            "name": { "kind": "Name", "value": "category" },
+            "arguments": [],
+            "type": {
+              "kind": "NonNullType",
+              "type": {
+                "kind": "NamedType",
+                "name": { "kind": "Name", "value": "String" }
+              }
+            }
+          },
+          {
+            "kind": "FieldDefinition",
+            "name": { "kind": "Name", "value": "date" },
+            "arguments": [],
+            "type": {
+              "kind": "NonNullType",
+              "type": {
+                "kind": "NamedType",
+                "name": { "kind": "Name", "value": "String" }
+              }
+            }
+          },
+          {
+            "kind": "FieldDefinition",
+            "name": { "kind": "Name", "value": "image" },
             "arguments": [],
             "type": {
               "kind": "NonNullType",
@@ -1070,6 +1154,47 @@
       },
       {
         "kind": "InputObjectTypeDefinition",
+        "name": { "kind": "Name", "value": "ImageFilter" },
+        "fields": [
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "startsWith" },
+            "type": {
+              "kind": "NamedType",
+              "name": { "kind": "Name", "value": "String" }
+            }
+          },
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "eq" },
+            "type": {
+              "kind": "NamedType",
+              "name": { "kind": "Name", "value": "String" }
+            }
+          },
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "exists" },
+            "type": {
+              "kind": "NamedType",
+              "name": { "kind": "Name", "value": "Boolean" }
+            }
+          },
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "in" },
+            "type": {
+              "kind": "ListType",
+              "type": {
+                "kind": "NamedType",
+                "name": { "kind": "Name", "value": "String" }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "kind": "InputObjectTypeDefinition",
         "name": { "kind": "Name", "value": "RichTextFilter" },
         "fields": [
           {
@@ -1112,6 +1237,14 @@
           },
           {
             "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "full_title" },
+            "type": {
+              "kind": "NamedType",
+              "name": { "kind": "Name", "value": "StringFilter" }
+            }
+          },
+          {
+            "kind": "InputValueDefinition",
             "name": { "kind": "Name", "value": "author" },
             "type": {
               "kind": "NamedType",
@@ -1120,10 +1253,34 @@
           },
           {
             "kind": "InputValueDefinition",
-            "name": { "kind": "Name", "value": "posted" },
+            "name": { "kind": "Name", "value": "excerpt" },
+            "type": {
+              "kind": "NamedType",
+              "name": { "kind": "Name", "value": "StringFilter" }
+            }
+          },
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "category" },
+            "type": {
+              "kind": "NamedType",
+              "name": { "kind": "Name", "value": "StringFilter" }
+            }
+          },
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "date" },
             "type": {
               "kind": "NamedType",
               "name": { "kind": "Name", "value": "DatetimeFilter" }
+            }
+          },
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "image" },
+            "type": {
+              "kind": "NamedType",
+              "name": { "kind": "Name", "value": "ImageFilter" }
             }
           },
           {
@@ -1538,6 +1695,14 @@
           },
           {
             "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "full_title" },
+            "type": {
+              "kind": "NamedType",
+              "name": { "kind": "Name", "value": "String" }
+            }
+          },
+          {
+            "kind": "InputValueDefinition",
             "name": { "kind": "Name", "value": "author" },
             "type": {
               "kind": "NamedType",
@@ -1546,7 +1711,31 @@
           },
           {
             "kind": "InputValueDefinition",
-            "name": { "kind": "Name", "value": "posted" },
+            "name": { "kind": "Name", "value": "excerpt" },
+            "type": {
+              "kind": "NamedType",
+              "name": { "kind": "Name", "value": "String" }
+            }
+          },
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "category" },
+            "type": {
+              "kind": "NamedType",
+              "name": { "kind": "Name", "value": "String" }
+            }
+          },
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "date" },
+            "type": {
+              "kind": "NamedType",
+              "name": { "kind": "Name", "value": "String" }
+            }
+          },
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "image" },
             "type": {
               "kind": "NamedType",
               "name": { "kind": "Name", "value": "String" }

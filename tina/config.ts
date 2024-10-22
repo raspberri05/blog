@@ -42,14 +42,38 @@ export default defineConfig({
           },
           {
             type: "string",
+            name: "full_title",
+            label: "Full Title",
+            required: true,
+          },
+          {
+            type: "string",
             name: "author",
             label: "Author",
             required: true,
           },
           {
+            type: "string",
+            name: "excerpt",
+            label: "Excerpt",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "category",
+            label: "Category",
+            required: true,
+          },
+          {
             type: "datetime",
-            name: "posted",
+            name: "date",
             label: "Date Posted",
+            required: true,
+          },
+          {
+            type: "image",
+            name: "image",
+            label: "Image",
             required: true,
           },
           {

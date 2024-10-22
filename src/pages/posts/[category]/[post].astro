@@ -1,0 +1,35 @@
+---
+const { category, post } = Astro.params;
+import { getEntry } from "astro:content";
+//@ts-ignore
+const item = await getEntry("posts", post);
+//@ts-ignore
+const { Content } = await item.render();
+import PageLayout from "../../../layouts/PageLayout.astro";
+import Prose from "@/components/Prose.astro";
+import { Button } from "@/components/ui/button";
+import Meta from "@/components/Meta.astro";
+---
+
+<PageLayout title=`Naya's Blog | ${item?.data.title}`>
+  <a href="/">
+    <Button>Back to all posts</Button>
+  </a>
+  <br />
+  <br />
+  <h1>{item?.data.full_title}</h1>
+  <br />
+  <Meta
+    image={item?.data.image}
+    author={item?.data.author}
+    date={item?.data.date}
+  />
+  <br />
+  <br />
+  <p class="mt-[-10px] mb-[-20px]">{category}</p>
+  <br />
+  <br />
+  <Prose>
+    <Content />
+  </Prose>
+</PageLayout>

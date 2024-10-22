@@ -1,10 +1,33 @@
 ---
 import { Button } from "@/components/ui/button";
-import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageLayout from "@/layouts/PageLayout.astro";
+import { getCollection } from "astro:content";
+const posts = await getCollection("posts");
 ---
 
-<BaseLayout>
+<PageLayout title="Naya's Blog">
   <h1>Welcome to my blog</h1>
   <br />
-  <a href="/posts"><Button>Start Reading</Button></a>
-</BaseLayout>
+  <p>
+    Welcone to my personal blog, where I write about various computer science
+    topics!
+  </p>
+  <br />
+  {
+    posts.map((post: any) => (
+      <div class="pr-10 md:max-w-[50%]">
+        <h2>{post.data.full_title}</h2>
+        <br />
+        <p>{post.data.excerpt}</p>
+
+        <br />
+        <a href={`/posts/${post.data.category}/${post.slug}`}>
+          <Button>Read More</Button>
+        </a>
+        <br />
+        <br />
+        <br />
+      </div>
+    ))
+  }
+</PageLayout>

@@ -1,0 +1,13 @@
+---
+const { image, author, date } = Astro.props;
+const postedDateParts = String(date).split("00:00:00")[0].split(" ");
+const [_, year, month, day] = postedDateParts;
+---
+
+<div class="flex gap-4">
+  <img src={image} width="50px" height="50px" class="rounded-full" />
+  <div>
+    <p>{author}</p>
+    <p>{year} {month} {day}</p>
+  </div>
+</div>
