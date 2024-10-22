@@ -86,6 +86,15 @@
             "searchable": true,
             "parser": { "type": "markdown" },
             "uid": false
+          },
+          {
+            "type": "string",
+            "name": "description",
+            "label": "Description",
+            "required": true,
+            "namespace": ["post", "description"],
+            "searchable": true,
+            "uid": false
           }
         ],
         "namespace": ["post"]
@@ -1026,6 +1035,18 @@
           },
           {
             "kind": "FieldDefinition",
+            "name": { "kind": "Name", "value": "description" },
+            "arguments": [],
+            "type": {
+              "kind": "NonNullType",
+              "type": {
+                "kind": "NamedType",
+                "name": { "kind": "Name", "value": "String" }
+              }
+            }
+          },
+          {
+            "kind": "FieldDefinition",
             "name": { "kind": "Name", "value": "id" },
             "arguments": [],
             "type": {
@@ -1289,6 +1310,14 @@
             "type": {
               "kind": "NamedType",
               "name": { "kind": "Name", "value": "RichTextFilter" }
+            }
+          },
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "description" },
+            "type": {
+              "kind": "NamedType",
+              "name": { "kind": "Name", "value": "StringFilter" }
             }
           }
         ]
@@ -1747,6 +1776,14 @@
             "type": {
               "kind": "NamedType",
               "name": { "kind": "Name", "value": "JSON" }
+            }
+          },
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "description" },
+            "type": {
+              "kind": "NamedType",
+              "name": { "kind": "Name", "value": "String" }
             }
           }
         ]

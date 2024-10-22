@@ -82,6 +82,12 @@ export default defineConfig({
             label: "Body",
             isBody: true,
           },
+          {
+            type: "string",
+            name: "description",
+            label: "Description",
+            required: true,
+          },
         ],
       },
     ],
