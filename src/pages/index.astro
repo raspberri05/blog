@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import PageLayout from "@/layouts/PageLayout.astro";
 import { getCollection } from "astro:content";
 const posts = await getCollection("posts");
-import readingTime from 'reading-time'
+import readingTime from "reading-time";
 ---
 
 <PageLayout
@@ -19,21 +19,23 @@ import readingTime from 'reading-time'
   <br />
   <br />
   {
-    posts.map((post: any) => (
-      <div class="pr-10 md:max-w-[50%]">
-        <h2>{post.data.full_title}</h2>
-        <br />
-        <p>{post.data.excerpt}</p>
-        <br />
-        <p>{readingTime(String(post.content)).text}</p>
-        <br />
-        <a href={`/posts/${post.data.category}/${post.slug}`}>
-          <Button>Read Post</Button>
-        </a>
-        <br />
-        <br />
-        <br />
-      </div>
-    ))
+    posts
+      .filter((post: any) => !post.data.draft)
+      .map((post: any) => (
+        <div class="pr-10 md:max-w-[50%]">
+          <h2>{post.data.full_title}</h2>
+          <br />
+          <p>{post.data.excerpt}</p>
+          <br />
+          <p>{readingTime(String(post.content)).text}</p>
+          <br />
+          <a href={`/posts/${post.data.category}/${post.slug}`}>
+            <Button>Read Post</Button>
+          </a>
+          <br />
+          <br />
+          <br />
+        </div>
+      ))
   }
 </PageLayout>

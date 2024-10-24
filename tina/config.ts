@@ -32,7 +32,15 @@ export default defineConfig({
         name: "post",
         label: "Posts",
         path: "src/content/posts",
+        format: "md",
         fields: [
+          {
+            name: "draft",
+            label: "Draft",
+            type: "boolean",
+            required: true,
+            description: "If this is checked the post will not be published",
+          },
           {
             type: "string",
             name: "title",
@@ -77,19 +85,27 @@ export default defineConfig({
             required: true,
           },
           {
-            type: "rich-text",
-            name: "body",
-            label: "Body",
-            isBody: true,
-          },
-          {
             type: "string",
             name: "description",
             label: "Description",
             required: true,
           },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Body",
+            isBody: true,
+          },
         ],
       },
     ],
+  },
+  search: {
+    tina: {
+      indexerToken: process.env.TINA_SEARCH_TOKEN,
+      stopwordLanguages: ["eng"],
+    },
+    indexBatchSize: 100,
+    maxSearchIndexFieldLength: 100,
   },
 });
